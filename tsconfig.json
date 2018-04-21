@@ -1,23 +1,32 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
+    "target": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "rootDir": "src",
-    "baseUrl": ".",
-    "skipLibCheck": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
-  },
-  "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts"]
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "build",
+    "paths": {
+      "@server/*": ["*", "server/*"],
+      "@client/*": ["*", "client/*"],
+      "@common/*": ["*", "common/*"],
+      "lib/*": ["*", "lib/*"]
+    },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
+  }
+  // "exclude": ["node_modules", "config"]
 }

@@ -1,0 +1,20 @@
+{
+  "name": "ohgodohgod-server",
+  "license": "CC0-1.0",
+  "version": "0.1.0",
+  "homepage": "https://github.com/sskiswani/ohgodohgod",
+  "repository": {
+    "url": "git@github.com:sskiswani/ohgodohgod.git",
+    "type": "git"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^9.6.6",
+    "prettier": "^1.12.1",
+    "ts-node": "^6.0.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.12.0",
+    "typescript": "^2.8.3"
+  }
+}
