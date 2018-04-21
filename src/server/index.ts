@@ -1,21 +1,28 @@
 import pino from '@common/logger';
-import { hmrMiddleware } from '@server/middleware/HMRHandler';
-import * as Koa from 'koa';
-import * as koaLogger from 'koa-logger';
-import * as koaServe from 'koa-static';
+import { Server } from 'colyseus';
+import express from 'express';
+import expressLogger from 'express-pino-logger';
+import { createServer } from 'http';
+import { hmrMiddleware } from './middleware/HMRHandler';
 
+console.info('it cant work', Server);
 const isDev = process.env.NODE_ENV === 'development';
-const appName = process.env.APP_NAME!;
-const appVersion = process.env.APP_VERSION!;
-const appDist = process.env.APP_DIST!;
-const appPort = process.env.APP_PORT!;
+const appName = process.env.APP_NAME || 'ohgodohgod';
+const appDist = process.env.APP_DIST || 'dist';
+const PORT = Number.parseInt(process.env.APP_PORT || '3000', 10);
 
-const app = new Koa();
+const app = express();
+const gameServer = new Server({
+  server: createServer(app)
+});
 
 if (isDev) {
-  app.use(koaLogger()).use(hmrMiddleware());
+  app.use(expressLogger());
+  // .use(
+  hmrMiddleware();
+  // );
 } else {
-  app.use(koaServe(appDist));
+  app.use(express.static(appDist));
 }
 
-app.listen(appPort, () => pino.info(`${appName} v${appVersion} [Port] ${appPort} [Mode] ${isDev ? '⚙️' : '🌎'}`));
+gameServer.listen(PORT, 'localhost', undefined, () => pino.info(Server, `[[${appName} @ http://localhost${PORT}]]`));

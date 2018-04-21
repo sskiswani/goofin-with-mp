@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import * as pino from 'pino';
+import pino from 'pino';
 
 export const enum LogLevel {
   DEBUG = 20,

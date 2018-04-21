@@ -3,10 +3,13 @@
     "target": "esnext",
     "module": "commonjs",
     "moduleResolution": "node",
+    "jsx": "react",
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
@@ -14,8 +17,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "baseUrl": "src",
-    "rootDir": "src",
-    "outDir": "build",
+    "outDir": "dist",
     "paths": {
       "@server/*": ["*", "server/*"],
       "@client/*": ["*", "client/*"],
@@ -28,5 +30,4 @@
       }
     ]
   }
-  // "exclude": ["node_modules", "config"]
 }

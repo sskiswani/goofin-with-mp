@@ -28,7 +28,7 @@
     "switch-default": true,
     "trailing-comma": [false],
     "triple-equals": [true, "allow-null-check"],
-    "typedef": [true, "parameter", "property-declaration"],
+    "typedef": false,
     "typedef-whitespace": [
       true,
       {
@@ -42,7 +42,7 @@
     "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
   },
   "rules": {
-    "align": [true, "parameters", "arguments", "statements"],
+    "align": [true, "parameters", "statements"],
     "comment-format": [true, "check-space"],
     "eofline": false,
     "forin": true,
