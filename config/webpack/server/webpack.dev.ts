@@ -1,11 +1,7 @@
-// Node module
-import webpack from 'webpack';
-// Config
-import baseConfig from './webpack.base';
+import { Configuration } from 'webpack';
+import config from './webpack.base';
 
-const devConfig: webpack.Configuration = {
-  ...baseConfig,
-  mode: 'development',
-};
-
-export default devConfig;
+export default {
+  ...config,
+  mode: 'development'
+} as Configuration;

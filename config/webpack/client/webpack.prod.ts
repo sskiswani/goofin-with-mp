@@ -1,13 +1,11 @@
-// Node module
-import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-// Config
+import * as autoprefixer from 'autoprefixer';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
+import * as webpack from 'webpack';
 import paths from '../paths';
-import baseConfig from './webpack.base';
+import config from './webpack.base';
 
-const prodConfig: webpack.Configuration = {
-  ...baseConfig,
+const prodConfig = {
+  ...config,
   mode: 'production',
   output: {
     path: paths.dist,
@@ -15,7 +13,7 @@ const prodConfig: webpack.Configuration = {
   },
   module: {
     rules: [
-      ...baseConfig.module!.rules,
+      ...config.module!.rules,
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -28,12 +26,7 @@ const prodConfig: webpack.Configuration = {
                 plugins: () => [
                   require('postcss-flexbugs-fixes'),
                   autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9'
-                    ],
+                    browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
                     flexbox: 'no-2009'
                   })
                 ]
@@ -45,13 +38,13 @@ const prodConfig: webpack.Configuration = {
     ]
   },
   plugins: [
-    ...baseConfig.plugins!,
+    ...config.plugins!,
     new webpack.ProgressPlugin(),
     new ExtractTextPlugin({
       filename: '[name].[hash:6].css',
       allChunks: true
     })
   ]
-};
+} as webpack.Configuration;
 
 export default prodConfig;

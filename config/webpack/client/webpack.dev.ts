@@ -1,15 +1,13 @@
-// Node module
-import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-// Config
-import baseConfig from './webpack.base';
+import * as autoprefixer from 'autoprefixer';
+import * as webpack from 'webpack';
+import config from './webpack.base';
 
 const devConfig: webpack.Configuration = {
-  ...baseConfig,
+  ...config,
   mode: 'development',
   module: {
     rules: [
-      ...baseConfig.module!.rules,
+      ...config.module!.rules,
       {
         test: /\.css$/,
         use: [
@@ -21,12 +19,7 @@ const devConfig: webpack.Configuration = {
               plugins: () => [
                 require('postcss-flexbugs-fixes'),
                 autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9'
-                  ],
+                  browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
                   flexbox: 'no-2009'
                 })
               ],
@@ -36,7 +29,7 @@ const devConfig: webpack.Configuration = {
         ]
       }
     ]
-  },
+  }
 };
 
 export default devConfig;

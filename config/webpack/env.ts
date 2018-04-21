@@ -1,13 +1,11 @@
-// Version
 import packageInfo from '../../package.json';
-// TSConfig
-import tsconfig from '../../tsconfig.json';
+import tsConfig from '../../tsconfig.json';
 
 const env = {
-  appName: 'RKSTWB',
+  appName: packageInfo.name,
   appVersion: packageInfo.version,
   appPort: 3500,
-  tsCompilerOptions: tsconfig.compilerOptions
+  tsCompilerOptions: tsConfig.compilerOptions
 };
 
 export default env;

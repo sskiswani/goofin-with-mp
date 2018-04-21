@@ -1,18 +1,16 @@
-// Node module
-import fs from 'fs';
-import path from 'path';
+import { realpathSync } from 'fs';
+import { resolve } from 'path';
 
-const appPath = fs.realpathSync(process.cwd());
-
-const resolveApp = (relativePath: string) => path.resolve(appPath, relativePath);
+export const appPath = realpathSync(process.cwd());
+const resolver = (relativePath: string) => resolve(appPath, relativePath);
 
 const paths = {
-  resolveApp,
-  dist: resolveApp('dist'),
-  nodeModules: resolveApp('node_modules'),
-  htmlTemplate: resolveApp('public/index.html'),
-  client: resolveApp('src/client'),
-  server: resolveApp('src/server')
+  resolver,
+  dist: resolver('dist'),
+  nodeModules: resolver('node_modules'),
+  htmlTemplate: resolver('public/index.html'),
+  client: resolver('src/client'),
+  server: resolver('src/server')
 };
 
 export default paths;

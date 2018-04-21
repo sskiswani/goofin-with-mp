@@ -1,15 +1,8 @@
-// Node module
-import webpack from 'webpack';
-// Config
-import baseConfig from './webpack.base';
+import * as webpack from 'webpack';
+import config from './webpack.base';
 
-const prodConfig: webpack.Configuration = {
-  ...baseConfig,
+export default {
+  ...config,
   mode: 'production',
-  plugins: [
-    ...baseConfig.plugins!,
-    new webpack.ProgressPlugin()
-  ]
-};
-
-export default prodConfig;
+  plugins: [...config.plugins!, new webpack.ProgressPlugin()]
+} as webpack.Configuration;

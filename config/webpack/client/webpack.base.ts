@@ -1,24 +1,22 @@
-// Node module
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-// Config
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as webpack from 'webpack';
 import env from '../env';
 import paths from '../paths';
 
-const baseConfig: webpack.Configuration = {
+const config: webpack.Configuration = {
   stats: 'minimal',
   target: 'web',
   entry: [paths.client],
   resolve: {
-    alias: {
-      '@actions': paths.resolveApp('src/client/actions'),
-      '@components': paths.resolveApp('src/client/components'),
-      '@containers': paths.resolveApp('src/client/containers'),
-      '@helpers': paths.resolveApp('src/client/helpers'),
-      '@reducers': paths.resolveApp('src/client/reducers'),
-      '@routes': paths.resolveApp('src/client/routes'),
-      '#lib': paths.resolveApp('src/lib')
-    },
+    // alias: {
+    // '@actions': paths.resolve('src/client/actions'),
+    // '@components': paths.resolve('src/client/components'),
+    // '@containers': paths.resolve('src/client/containers'),
+    // '@helpers': paths.resolve('src/client/helpers'),
+    // '@reducers': paths.resolve('src/client/reducers'),
+    // '@routes': paths.resolve('src/client/routes'),
+    // '#lib': paths.resolve('src/lib')
+    // },
     modules: ['node_modules', paths.nodeModules],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
@@ -31,7 +29,11 @@ const baseConfig: webpack.Configuration = {
           options: {
             silent: true,
             transpileOnly: true,
-            compilerOptions: { ...env.tsCompilerOptions, target: 'es6', module: 'esnext' }
+            compilerOptions: {
+              ...env.tsCompilerOptions,
+              target: 'es6',
+              module: 'esnext'
+            }
           }
         }
       },
@@ -70,4 +72,4 @@ const baseConfig: webpack.Configuration = {
   ]
 };
 
-export default baseConfig;
+export default config;

@@ -1,11 +1,10 @@
-// Node module
-import webpack from 'webpack';
-import nodeExternals from 'webpack-node-externals';
-// Config
+import * as webpack from 'webpack';
+import * as nodeExternals from 'webpack-node-externals';
+
 import env from '../env';
 import paths from '../paths';
 
-const baseConfig: webpack.Configuration = {
+const config: webpack.Configuration = {
   stats: 'minimal',
   target: 'node',
   entry: paths.server,
@@ -14,9 +13,7 @@ const baseConfig: webpack.Configuration = {
     filename: 'index.js'
   },
   resolve: {
-    alias: {
-      '#lib': paths.resolveApp('src/lib')
-    },
+    // alias: { '#lib': paths.resolve('src/lib') },
     modules: ['node_modules', paths.nodeModules],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
@@ -39,4 +36,4 @@ const baseConfig: webpack.Configuration = {
   externals: [nodeExternals()]
 };
 
-export default baseConfig;
+export default config;
