@@ -1,1 +1,15 @@
-{}
+{
+  "vsicons.associations.folders": [
+    {
+      "icon": "server",
+      "format": "svg",
+      "extensions": ["main"]
+    },
+    {
+      "icon": "client",
+      "format": "svg",
+      "extensions": ["renderer"]
+    }
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

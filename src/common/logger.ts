@@ -17,7 +17,7 @@ export const ColorMap = {
   [LogLevel.USERLVL]: chalk.white
 };
 
-const mapLevelToColor = (value: number) => {
+function mapLevelToColor(value: number) {
   if (value <= LogLevel.DEBUG) {
     return ColorMap[LogLevel.DEBUG];
   }
@@ -32,7 +32,7 @@ const mapLevelToColor = (value: number) => {
   }
 
   return ColorMap[LogLevel.USERLVL];
-};
+}
 
 export const createLogger = (prettyPrint = true) => {
   if (!pino.pretty) {

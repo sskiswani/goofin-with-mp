@@ -1,8 +1,8 @@
-\!grave*
 .local*
 -*
 dump
 logs/
+dist
 
 .vscode/*
 !.vscode/settings.json

@@ -102,7 +102,8 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.APP_NAME': JSON.stringify(env.appName),
-      'process.env.APP_VERSION': JSON.stringify(env.appVersion)
+      'process.env.APP_VERSION': JSON.stringify(env.appVersion),
+      'process.env.APP_PORT': JSON.stringify(env.appPort)
     }),
     new HtmlWebpackPlugin({
       title: env.appName,

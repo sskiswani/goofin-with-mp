@@ -1,7 +1,9 @@
+import pin from '@common/logger';
 import { complement, lighten, saturate, transparentize } from 'polished';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 import styled from 'styled-components';
+import ClientContainer from './Client';
 
 export interface IAppProps {
   name?: string;
@@ -38,8 +40,6 @@ const Hero = styled.header.attrs({ color: props => props.color || 'white' })`
   }
 `;
 
-import pin from '@common/logger';
-
 class App extends React.Component<IAppProps> {
   public componentDidMount() {
     pin.info('yo log baab!');
@@ -55,6 +55,7 @@ class App extends React.Component<IAppProps> {
           </h1>
           <h2>v{version}</h2>
         </Hero>
+        <ClientContainer />
       </div>
     );
   }
