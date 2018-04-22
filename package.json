@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "homepage": "https://github.com/sskiswani/ohgodohgod",
   "scripts": {
-    "clean": "rimraf dist/*",
     "serve": "node dist/index.js",
     "start": "webpack --config config/webpack/server/webpack.dev.ts && node dist/index.js",
     "build": "yarn clean && yarn build:server && yarn build:client",
