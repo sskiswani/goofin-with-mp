@@ -4,6 +4,10 @@ import * as React from 'react';
 
 const PORT = Number.parseInt(process.env.APP_PORT || '3000', 10);
 
+interface IClientContainerProps {
+  onConnected?: (client: Colyseus.Client) => void;
+}
+
 interface IClientContainerState {
   room?: Colyseus.Room<{}>;
   messages: string[];
@@ -21,7 +25,7 @@ class Outgoing extends React.Component<{ onSend?: Function }, { text: string }> 
     const { text } = this.state;
     return (
       <div>
-        <textarea cols={80} rows={10} style={{ display: 'block' }} onChange={this.onTextChanged} value={text} />;
+        <textarea cols={80} rows={10} style={{ display: 'block' }} onChange={this.onTextChanged} value={text} />
         <hr />
         <input disabled={!onSend} type="button" value="Send" onClick={this.onSubmit} />
       </div>
@@ -48,7 +52,7 @@ class Outgoing extends React.Component<{ onSend?: Function }, { text: string }> 
 const endpoint = `${location.protocol.replace('http', 'ws')}//${location.hostname}:${PORT}`;
 
 // tslint:disable-next-line:max-classes-per-file
-export default class ClientContainer extends React.Component<any, IClientContainerState> {
+export default class ClientContainer extends React.Component<IClientContainerProps, IClientContainerState> {
   private client: Colyseus.Client;
   constructor(props: any, ctx: any) {
     super(props, ctx);
@@ -59,7 +63,6 @@ export default class ClientContainer extends React.Component<any, IClientContain
   public componentDidMount() {
     this.client.onOpen.add(() => {
       logger.debug('yooo connected baby!');
-
       const room = this.client.join('chat');
 
       // new room state
@@ -74,6 +77,7 @@ export default class ClientContainer extends React.Component<any, IClientContain
       this.setState({ room });
     });
   }
+
   public render() {
     const { room, messages } = this.state;
     return (
@@ -87,5 +91,11 @@ export default class ClientContainer extends React.Component<any, IClientContain
   }
 
   private readonly onSend = message => this.state.room!.send({ message });
-  private readonly onJoin = state => console.log('initial room state:', state);
+  private readonly onJoin = state => {
+    console.log('joined room!:', state);
+
+    if (this.props.onConnected) {
+      this.props.onConnected(this.client);
+    }
+  };
 }

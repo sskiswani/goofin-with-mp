@@ -14,6 +14,7 @@ import config from '../../../config/webpack/client/webpack.dev';
 
 const devPort = 6005;
 
+console.info('hello?');
 export const hmrMiddleware = () => {
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, {
@@ -22,7 +23,10 @@ export const hmrMiddleware = () => {
     hot: true
   });
 
+  console.info('hi');
   devServer.listen(devPort, () => {
     logger.debug('webpack-dev-server is listening on port', devPort);
   });
+
+  return devServer;
 };

@@ -3,10 +3,9 @@ import * as ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import App from './containers/App';
 
-import '../assets/style.css';
-
 const name = process.env.APP_NAME!;
 const version = process.env.APP_VERSION!;
+console.info('wait a second...', process.env, name, version);
 
 ReactDOM.render(
   <div>
