@@ -5,6 +5,7 @@ export const Banner = styled.header.attrs({ color: props => props.color || 'whit
   background-color: ${saturate(0.25, '#222')};
   height: 100px;
   padding: 10px 20px;
+  margin-bottom: 10px;
 
   text-align: center;
   line-height: 1.5em;

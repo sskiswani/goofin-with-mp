@@ -2,7 +2,7 @@ import logger from '@common/logger';
 import * as PIXI from 'pixi.js';
 import * as React from 'react';
 
-export interface IProps {
+interface IProps {
   pixiOptions?: PIXI.ApplicationOptions;
   onPixiMounted?: (app: PIXI.Application) => void;
   onLoaded?: (app: PIXI.Application, loader: PIXI.loaders.Loader, resources: PIXI.loaders.Resource) => void;
@@ -12,7 +12,7 @@ export interface IProps {
   [key: string]: any;
 }
 
-export interface IState {
+interface IState {
   running: boolean;
 
   // shut up tslint
@@ -34,28 +34,15 @@ export class PixiContainer extends React.Component<IProps, IState> {
   constructor(props: IProps, c: any) {
     super(props, c);
     this.state = {
-      running: true
+      running: false
     };
 
     const { pixiOptions } = props;
     this.app = new PIXI.Application(pixiOptions);
   }
 
-  public componentDidUpdate(prevProps: IProps, prevState: IState) {
-    if (prevProps.clientId === this.props.clientId) {
-      return;
-    }
-
-    // const stage = this.app.stage;
-    // const unitContainer = stage.getChildByName('unit') as PIXI.Container;
-    // const label = unitContainer.getChildByName('clientId') as PIXI.Text;
-    // label!.text = this.props.clientId;
-  }
-
   public componentDidMount() {
     const { onPixiMounted, onLoaded } = this.props;
-
-    console.info('mounting...');
     this.mountPoint.appendChild(this.app.view);
 
     PIXI.loader.add('soldier', 'public/assets/scifiUnit_04.png').load((loader, resources) => {
@@ -78,6 +65,7 @@ export class PixiContainer extends React.Component<IProps, IState> {
       this.app.stage.addChild(obj);
 
       this.app.start();
+      this.setState({ running: true });
     });
 
     if (onPixiMounted) {

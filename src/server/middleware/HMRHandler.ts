@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import config from '../../../config/webpack/client/webpack.dev';
 
-const devPort = 6005;
+const DEV_PORT = 6005;
 
 const compiler = webpack(config);
 const devServer = new WebpackDevServer(compiler, {
@@ -13,12 +13,12 @@ const devServer = new WebpackDevServer(compiler, {
   }
 });
 
-devServer.listen(devPort, err => {
+devServer.listen(DEV_PORT, err => {
   if (err) {
     console.error(err);
   }
 
-  console.info(`[webpack-dev-server] is listening on port http://localhost:${devPort}`);
+  console.info(`[webpack-dev-server] is listening on port http://localhost:${DEV_PORT}`);
 });
 
 console.info(`pls!`);

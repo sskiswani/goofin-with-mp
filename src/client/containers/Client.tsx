@@ -92,7 +92,7 @@ export default class ClientContainer extends React.Component<IClientContainerPro
 
   private readonly onSend = message => this.state.room!.send({ message });
   private readonly onJoin = state => {
-    console.log('joined room!:', state);
+    logger.log('joined room!:', state);
 
     if (this.props.onConnected) {
       this.props.onConnected(this.client);

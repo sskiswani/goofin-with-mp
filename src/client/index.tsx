@@ -5,7 +5,6 @@ import App from './containers/App';
 
 const name = process.env.APP_NAME!;
 const version = process.env.APP_VERSION!;
-console.info('wait a second...', process.env, name, version);
 
 ReactDOM.render(
   <div>
