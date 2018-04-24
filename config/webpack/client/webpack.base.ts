@@ -108,19 +108,7 @@ const config = {
     new HtmlWebpackPlugin({
       title: env.appName,
       template: paths.htmlTemplate,
-      favicon: 'public/favicon.ico',
-      minify: {
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-        removeComments: true,
-        useShortDoctype: true,
-        keepClosingSlash: true,
-        collapseWhitespace: true,
-        removeEmptyAttributes: true,
-        removeRedundantAttributes: true,
-        removeStyleLinkTypeAttributes: true
-      }
+      favicon: 'public/favicon.ico'
     })
   ]
 } as webpack.Configuration;

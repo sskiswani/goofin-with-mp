@@ -25,8 +25,8 @@ app.use(expressLogger());
 hmrMiddleware();
 
 const assetDir = path.resolve(appDist, '../public');
-app.use(express.static(appDist));
-console.info(chalk.green`serving up ${assetDir}`);
+// app.use(express.static(appDist));
+console.info(chalk.green`serving up ${assetDir}`, assetDir);
 
 const server = createServer(app);
 

@@ -6,7 +6,7 @@ import { Banner } from '../components/Banner';
 import ClientContainer from './Client';
 import { PixiContainer } from './PixiContainer';
 
-interface IAppProps {
+interface IProps {
   name?: string;
   version?: string;
 }
@@ -15,22 +15,11 @@ interface IState {
   client?: Client;
 }
 
-class App extends React.Component<IAppProps, IState> {
-  constructor(props: IAppProps, ctx: any) {
-    super(props, ctx);
-  }
-
-  public componentDidMount() {
-    logger.info('HI PLS');
-  }
-
+class App extends React.Component<IProps, IState> {
   public render() {
     const { name, version } = this.props;
-    // const { client } = this.state;
-
     return (
       <div>
-        <h1>pls</h1>
         <Banner color="white">
           <h1>{`Welcome to ${name}`} </h1>
           <h2>v{version}</h2>
@@ -42,6 +31,7 @@ class App extends React.Component<IAppProps, IState> {
       </div>
     );
   }
+
   private onConnected = client => this.setState({ client });
 }
 
