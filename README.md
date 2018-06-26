@@ -1,6 +1,2 @@
-# eeeeeeeeeeeeeee
- :computer:
-  :fax:
- :minidisc: :floppy_disk:
- :construction_worker:
- :eyes:
+# goofin-with-mp
+was going to be a ludum dare thing, but now a playground for multiplayer experiments.
